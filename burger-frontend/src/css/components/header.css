@@ -1,0 +1,124 @@
+.header {
+  position: fixed;
+  z-index: 999;
+  background-color: #fff;
+
+  width: 100%;
+
+  box-shadow: 0 0.3em 0.3em -0.3em black;
+}
+
+.header-container {
+  position: relative;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin: 0px auto;
+
+  width: 110em;
+  height: 10em;
+}
+
+.header-logo {
+  width: 6.6em;
+  height: 6.5em;
+}
+
+.nav-bar {
+  display: flex;
+  justify-content: space-between;
+
+  width: 50em;
+}
+
+.header-link {
+  font-size: 1.7em;
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+button {
+  height: 2.6em;
+  border: 1px solid;
+  border-radius: 2em;
+}
+
+.nav-button {
+  width: 30em;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-inquiry {
+  width: 8.5em;
+
+  background-color: #502416;
+  font-size: 1.5em;
+  font-weight: 500;
+  font-family: 'Poor Story', cursive;
+  color: #fff;
+}
+
+.header-login-group {
+  width: 12.5em;
+}
+
+.header-login-group button {
+  width: 5em;
+
+  font-size: 1.2em;
+  font-weight: 500;
+  font-family: 'Poor Story', cursive;
+  color: #fff;
+}
+
+.header-signin {
+  background-color: #d72300;
+}
+.header-signup {
+  background-color: #ffc423;
+}
+
+/* --------------------- header dropdown ---------------------*/
+/* --------------------- header dropdown ---------------------*/
+/* --------------------- header dropdown ---------------------*/
+
+.header-dropdown {
+  position: fixed;
+
+  top: 10em;
+
+  width: 100%;
+  height: 18.75em;
+  background-color: #fff;
+  z-index: 999;
+  box-shadow: 0 0.3em 0.3em -0.3em black;
+}
+
+.header-dropdown-container {
+  display: flex;
+  justify-content: space-between;
+
+  margin: 0px 43.5em;
+
+  width: 46.5em;
+  height: 17em;
+}
+
+.header-dropdown-submenu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.submenu-link {
+  font-size: 2.2em;
+  font-weight: 700;
+  font-family: 'Dongle', sans-serif;
+  cursor: pointer;
+}

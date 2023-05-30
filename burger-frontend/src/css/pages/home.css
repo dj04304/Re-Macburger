@@ -1,0 +1,98 @@
+.main-container {
+  width: 1400px;
+
+  margin: 0px auto;
+}
+
+/* --------------------- video ---------------------*/
+
+.burger-video {
+  width: 1400px;
+  height: 600px;
+}
+
+/* --------------------- menu ---------------------*/
+
+.resc-title {
+  text-align: center;
+  font-size: 30px;
+  color: rgb(128, 128, 128);
+}
+
+.recs-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 600px;
+
+  background-color: #f2ebe6;
+}
+
+.recs-menu-group {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.resc-menu-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  width: 400px;
+  height: 400px;
+
+  background-color: #f8f8f8;
+  border-radius: 10px;
+  border: 1px solid #f8f8f8;
+
+  cursor: pointer;
+}
+
+.resc-menu-list:hover {
+  background-color: #fff;
+  border: 1px solid #d17e09;
+}
+
+.resc-menu-name {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+/* --------------------- store ---------------------*/
+
+.main-store {
+  height: 500px;
+
+  background-color: #fff;
+}
+
+.main-store-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  height: 300px;
+}
+
+.main-store-title {
+  font-size: 30px;
+  color: #2e2e2e;
+}
+
+.main-store-text {
+  font-size: 22px;
+}
+
+.main-store-btn {
+  width: 200px;
+  height: 55px;
+
+  font-size: 22px;
+  font-weight: 500;
+  font-family: 'Single Day', cursive;
+  color: #fff;
+  background-color: #d72300;
+}
