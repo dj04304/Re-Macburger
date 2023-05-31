@@ -17,33 +17,41 @@ import lombok.RequiredArgsConstructor;
 public class SecurityConfig {
 	
 	private final CorsConfig corsConfig;
-
 	
 	@Bean
-	SecurityFilterChain filter(HttpSecurity http) throws Exception {
-		return http.csrf().disable()
-				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-				
-				.and()
-				
-				.formLogin().disable()
-				.httpBasic().disable()
-				
-				.apply(new MYCustomDsl())
-				
-				.and()
-				
-				.authorizeRequests(authrize -> authrize.antMatchers("/api/v1/user/**")
-						.access("hasRole('ROLE_USER') or hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN')")
-						
-						.antMatchers("/api/v1/manager/**")
-						.access("hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN')")
-						
-						.antMatchers("/api/v1/admin/**")
-						.access("hasRole('ROLE_ADMIN')")
-						
-						.anyRequest().permitAll())
-				.build();
+	public SecurityFilterChain filter(HttpSecurity http) throws Exception {
+		http.csrf().disable()
+			.authorizeRequests()
+            .antMatchers("/user/**").authenticated()
+            .antMatchers("/manager/**").hasAuthority("MANAGER")
+            .antMatchers("/admin/**").hasAuthority("ADMIN")
+            .anyRequest().permitAll()
+            
+            .and()
+            .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+            
+            .and()
+            
+            .formLogin().disable()
+            .httpBasic().disable()
+            
+            .apply(new MYCustomDsl())
+            
+            .and()
+            .formLogin()
+            .loginPage("/loginForm")
+            .loginProcessingUrl("/login")
+            .defaultSuccessUrl("/")
+            
+            .and()
+            .oauth2Login()
+            .loginPage(".loginForm")
+            .defaultSuccessUrl("/")
+            .userInfoEndpoint()
+//            .userService(null)
+            ;
+            
+		return http.build();
 	}
 	
 	public class MYCustomDsl extends AbstractHttpConfigurer<MYCustomDsl, HttpSecurity> {
@@ -56,3 +64,44 @@ public class SecurityConfig {
 	}
 	
 }
+
+
+//@Bean
+//SecurityFilterChain filter(HttpSecurity http) throws Exception {
+//	return http.csrf().disable()
+//			.authorizeRequests(authrize -> authrize.antMatchers("/api/v1/user/**")
+//					.access("hasRole('ROLE_USER') or hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN')")
+//					
+//					.antMatchers("/api/v1/manager/**")
+//					.access("hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN')")
+//					
+//					.antMatchers("/api/v1/admin/**")
+//					.access("hasRole('ROLE_ADMIN')")
+//					
+//					.anyRequest().permitAll())
+//			
+//			
+//			.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+//			
+//			.and()
+//			
+//			
+//			.formLogin().disable()
+//			.httpBasic().disable()
+//			
+//			.apply(new MYCustomDsl())
+//			
+//			.and()
+//			.formLogin()
+//			.loginPage("/loginForm")
+//			.loginProcessingUrl("/login")
+//			.defaultSuccessUrl("/")
+//			
+//			.and()
+//			.oauth2Login()
+//			.loginPage("/loginForm")
+//			.defaultSuccessUrl("/")
+//			.userInfoEndpoint();
+//			
+//			
+//}

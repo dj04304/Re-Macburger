@@ -24,6 +24,16 @@ spring:
       max-file-size: 50MB
       max-request-size: 50MB
           
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 748510625033-ld6t1ofmvvtvrob0o5dfbvf9d5uq4tc1.apps.googleusercontent.com
+            client-secret: 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
+            scope:
+            - email
+            - profile
     
 mybatis:
   mapper-locations:
