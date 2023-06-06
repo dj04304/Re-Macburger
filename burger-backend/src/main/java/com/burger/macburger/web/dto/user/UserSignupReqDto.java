@@ -1,6 +1,7 @@
 package com.burger.macburger.web.dto.user;
 
-import java.time.LocalDateTime;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.burger.macburger.domain.user.User;
 
@@ -9,6 +10,9 @@ import lombok.Data;
 @Data
 public class UserSignupReqDto {
 
+	@Autowired
+	private BCryptPasswordEncoder passwordEncoder;
+	
 	private String userId;
 	private String userPassword;
 	private String name;
@@ -21,7 +25,7 @@ public class UserSignupReqDto {
 	public User userEntity() {
 		return User.builder()
 				.user_id(userId)
-				.user_password(userPassword)
+				.user_password(passwordEncoder.encode(userPassword))
 				.user_name(name)
 				.user_birth(userBirth)
 				.user_phone(userPhone)
